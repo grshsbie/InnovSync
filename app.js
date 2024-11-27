@@ -1,3 +1,4 @@
+const cors = require('cors');
 const express = require('express');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
@@ -9,6 +10,17 @@ const productRoutes = require('./routes/productRoutes');
 require('dotenv').config();
 
 const app = express();
+
+
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+};
+
+
+app.use(cors(corsOptions));
+
 
 connectDB();
 
