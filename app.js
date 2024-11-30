@@ -7,6 +7,7 @@ const ritUserRoutes = require('./routes/ritUserRoutes');
 const ritTechnicianRoutes = require('./routes/ritTechnicianRoutes');
 const projectRoutes = require('./routes/projectRoutes');
 const productRoutes = require('./routes/productRoutes');
+const technicalDrawing = require('./routes/TechnicalDrawingRoutes')
 require('dotenv').config();
 
 const app = express();
@@ -14,7 +15,6 @@ const app = express();
 
 const corsOptions = {
   origin: 'http://localhost:3000',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 };
 
@@ -26,6 +26,8 @@ connectDB();
 
 app.use(express.json());
 
+
+app.use('/api/technical-draw',technicalDrawing)
 app.use('/api/auth', authRoutes);
 app.use('/api/introducers', introducerRoutes);
 app.use('/api/rit-users', ritUserRoutes);
