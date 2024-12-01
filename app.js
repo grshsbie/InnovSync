@@ -7,7 +7,10 @@ const ritUserRoutes = require('./routes/ritUserRoutes');
 const ritTechnicianRoutes = require('./routes/ritTechnicianRoutes');
 const projectRoutes = require('./routes/projectRoutes');
 const productRoutes = require('./routes/productRoutes');
-const technicalDrawing = require('./routes/TechnicalDrawingRoutes')
+const technicalDrawing = require('./routes/TechnicalDrawingRoutes');
+const manufacturers = require('./routes/productionRoutes')
+
+
 require('dotenv').config();
 
 const app = express();
@@ -27,6 +30,11 @@ connectDB();
 app.use(express.json());
 
 
+///api/manufacturers
+
+
+
+app.use('/api/manufacturers' , manufacturers)
 app.use('/api/technical-draw',technicalDrawing)
 app.use('/api/auth', authRoutes);
 app.use('/api/introducers', introducerRoutes);
