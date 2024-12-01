@@ -9,6 +9,7 @@ const projectRoutes = require('./routes/projectRoutes');
 const productRoutes = require('./routes/productRoutes');
 const technicalDrawing = require('./routes/TechnicalDrawingRoutes');
 const manufacturers = require('./routes/productionRoutes')
+const TechnicalTrainingCoursesRoutes = require('./routes/TechnicalTrainingCoursesRoutes')
 
 
 require('dotenv').config();
@@ -35,6 +36,7 @@ app.use(express.json());
 
 
 app.use('/api/manufacturers' , manufacturers)
+app.use('/api/training-courses',TechnicalTrainingCoursesRoutes)
 app.use('/api/technical-draw',technicalDrawing)
 app.use('/api/auth', authRoutes);
 app.use('/api/introducers', introducerRoutes);
