@@ -7,6 +7,7 @@ const productRoutes = require('./productRoutes');
 const technicalDrawing = require('./TechnicalDrawingRoutes');
 const manufacturers = require('./productionRoutes');
 const competitions = require('./compotitionsRoutes');
+const services = require('./servicesRoutes')
 const technicalTrainingCoursesRoutes = require('./TechnicalTrainingCoursesRoutes');
 
 module.exports = {
@@ -19,5 +20,6 @@ module.exports = {
   technicalDrawing,
   manufacturers,
   competitions,
+  services,
   technicalTrainingCoursesRoutes,
 };
