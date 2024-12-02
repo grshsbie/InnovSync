@@ -8,7 +8,8 @@ const ritTechnicianRoutes = require('./routes/ritTechnicianRoutes');
 const projectRoutes = require('./routes/projectRoutes');
 const productRoutes = require('./routes/productRoutes');
 const technicalDrawing = require('./routes/TechnicalDrawingRoutes');
-const manufacturers = require('./routes/productionRoutes')
+const manufacturers = require('./routes/productionRoutes');
+const competitions = require ('./routes/compotitionsRoutes')
 const TechnicalTrainingCoursesRoutes = require('./routes/TechnicalTrainingCoursesRoutes')
 
 
@@ -34,7 +35,7 @@ app.use(express.json());
 ///api/manufacturers
 
 
-
+app.use('/api/competitions',competitions)
 app.use('/api/manufacturers' , manufacturers)
 app.use('/api/training-courses',TechnicalTrainingCoursesRoutes)
 app.use('/api/technical-draw',technicalDrawing)
