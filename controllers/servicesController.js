@@ -1,6 +1,5 @@
-const Service = require('../models/Service');
+const Service = require('../models/Services');
 
-// Here's how to test each endpoint with Postman:
 
 // POST /api/services
 exports.createService = async (req, res) => {

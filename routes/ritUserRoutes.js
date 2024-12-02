@@ -1,11 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const ritUserController = require('../controllers/ritUserController');
-const authMiddleware = require('../middlewares/authMiddleware');
+const routes = require('../config/routesConfig');
+const registerRoutes = require('../config/registerRoutesConfig');
 
-router.post('/rit-users', authMiddleware, ritUserController.createRitUser);
-router.get('/rit-users', authMiddleware, ritUserController.getAllRitUsers);
-router.put('/rit-users/:id', authMiddleware, ritUserController.updateRitUser);
-router.delete('/rit-users/:id', authMiddleware, ritUserController.deleteRitUser);
+registerRoutes(router, routes);
 
 module.exports = router;

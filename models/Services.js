@@ -1,3 +1,6 @@
+const mongoose = require('mongoose');
+
+
 const servicesSchema = new mongoose.Schema({
   userId: {
     type: Number,
@@ -48,4 +51,4 @@ const servicesSchema = new mongoose.Schema({
   timestamps: true
 });
 
-const Payment = mongoose.model('servicesSchema', servicesSchema);
+module.exports = mongoose.model('servicesSchema', servicesSchema);
