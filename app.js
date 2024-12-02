@@ -13,6 +13,7 @@ connectDB();
 
 app.use(express.json());
 
+app.use('/api/invverify', routes.invRoutes);
 app.use('/api/competitions', routes.competitions);
 app.use('/api/manufacturers', routes.manufacturers);
 app.use('/api/training-courses', routes.technicalTrainingCoursesRoutes);

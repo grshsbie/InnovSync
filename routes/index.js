@@ -9,8 +9,10 @@ const manufacturers = require('./productionRoutes');
 const competitions = require('./compotitionsRoutes');
 const services = require('./servicesRoutes')
 const technicalTrainingCoursesRoutes = require('./TechnicalTrainingCoursesRoutes');
+const invRoutes = require('./invRouts')
 
 module.exports = {
+  invRoutes,
   authRoutes,
   introducerRoutes,
   ritUserRoutes,
