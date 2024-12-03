@@ -17,15 +17,33 @@ app.use(express.json());
 const storage = multer.diskStorage({
   destination: './uploads/',
   filename: function(req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname)
+    // Remove spaces and special characters from filename
+    const sanitizedFilename = file.originalname.replace(/[^a-zA-Z0-9.]/g, '_');
+    cb(null, Date.now() + '-' + sanitizedFilename)
   }
 });
 
 const upload = multer({ storage: storage });
 
 app.post('/api/upload', upload.single('file'), (req, res) => {
-  const fileUrl = `http://localhost:3000/uploads/${req.file.filename}`;
+  const fileUrl = `http://localhost:5000/uploads/${req.file.filename}`;
   res.json({ fileUrl });
+});
+
+app.get('/uploads', (req, res) => {
+  const fs = require('fs');
+  fs.readdir('./uploads', (err, files) => {
+    if (err) {
+      return res.status(500).json({ error: 'Failed to retrieve files' });
+    }
+    const fileUrls = files.map(filename => {
+      return {
+        name: filename,
+        url: `http://localhost:5000/uploads/${filename}`
+      };
+    });
+    res.json({ files: fileUrls });
+  });
 });
 
 app.use('/uploads', express.static('uploads'));
