@@ -1,5 +1,6 @@
 const cors = require('cors');
 const express = require('express');
+const multer = require('multer');
 const connectDB = require('./config/db');
 const routes = require('./routes/index.js');
 require('dotenv').config();
@@ -13,6 +14,21 @@ connectDB();
 
 app.use(express.json());
 
+const storage = multer.diskStorage({
+  destination: './uploads/',
+  filename: function(req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname)
+  }
+});
+
+const upload = multer({ storage: storage });
+
+app.post('/api/upload', upload.single('file'), (req, res) => {
+  const fileUrl = `http://localhost:3000/uploads/${req.file.filename}`;
+  res.json({ fileUrl });
+});
+
+app.use('/uploads', express.static('uploads'));
 app.use('/api/invverify', routes.invRoutes);
 app.use('/api/competitions', routes.competitions);
 app.use('/api/manufacturers', routes.manufacturers);
