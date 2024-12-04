@@ -17,7 +17,6 @@ app.use(express.json());
 const storage = multer.diskStorage({
   destination: './uploads/',
   filename: function(req, file, cb) {
-    // Remove spaces and special characters from filename
     const sanitizedFilename = file.originalname.replace(/[^a-zA-Z0-9.]/g, '_');
     cb(null, Date.now() + '-' + sanitizedFilename)
   }
@@ -58,7 +57,7 @@ app.use('/api/rit-users', routes.ritUserRoutes);
 app.use('/api/rit-technicians', routes.ritTechnicianRoutes);
 app.use('/api/projects', routes.projectRoutes);
 app.use('/api/products', routes.productRoutes);
-app.use('/api/services' , routes.services)
+app.use('/api/services', routes.services);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

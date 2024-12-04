@@ -5,15 +5,19 @@ const ProjectSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    ritUserId: {
-        type: Number,
-        required: true,
-        min: 1,
-        max: 10000,
+    userId: {
+      type: Number,
+      ref: 'User',
+      required: true,
     },
     introducerId: {
-        type: Number,
-        required: true,
+      type: Number,
+      ref: 'Introducer',
+      required: true,
+    },
+    emailRelatedToUser:{
+      type: String,
+      required : true,
     },
     price: {
         type: Number,
