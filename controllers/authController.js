@@ -1,8 +1,24 @@
+// Auth Controller
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 require('dotenv').config();
 
+/*
+To test registration in Postman:
+1. Set request method to POST
+2. URL: http://localhost:YOUR_PORT/api/auth/register
+3. Set Headers:
+   Content-Type: application/json
+4. Set Body to raw JSON:
+{
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john@example.com",
+    "password": "password123"
+}
+5. Send request - should return 201 status with success message
+*/
 
 exports.register = async (req, res) => {
     const { firstName, lastName, email, password } = req.body;
@@ -32,6 +48,20 @@ exports.register = async (req, res) => {
         res.status(500).send('Server error');
     }
 };
+
+/*
+To test login in Postman:
+1. Set request method to POST
+2. URL: http://localhost:YOUR_PORT/api/auth/login
+3. Set Headers:
+   Content-Type: application/json
+4. Set Body to raw JSON:
+{
+    "email": "john@example.com",
+    "password": "password123"
+}
+5. Send request - should return JWT token on success
+*/
 
 exports.login = async (req, res) => {
     const { email, password } = req.body;

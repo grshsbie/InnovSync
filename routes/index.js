@@ -10,6 +10,7 @@ const competitions = require('./compotitionsRoutes');
 const services = require('./servicesRoutes')
 const technicalTrainingCoursesRoutes = require('./TechnicalTrainingCoursesRoutes');
 const invRoutes = require('./invRouts')
+const botReport = require('./botReportRouts');
 
 module.exports = {
   invRoutes,
@@ -24,4 +25,5 @@ module.exports = {
   competitions,
   services,
   technicalTrainingCoursesRoutes,
+  botReport
 };

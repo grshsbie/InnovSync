@@ -18,7 +18,7 @@ const servicesSchema = new mongoose.Schema({
   },
   serviceType: {
     type: String,
-    enum: ['website_design', 'english_language', 'box_foam_design', 'product_photography',
+    enum: ['website_design', 'english_language_translate', 'box_foam_design', 'product_photography',
            'personal_photography', 'video_recording', 'video_recording_editing', 'technical_map_render'],
     required: true
   },
@@ -44,7 +44,11 @@ const servicesSchema = new mongoose.Schema({
   },
   currency: {
     type: String,
-    enum: ['rial', 'toman'],
+    enum: [
+        'IRR',    // Iranian Rial
+        'USD',    // United States Dollar
+        'EUR'     // Euro
+    ],
     required: true
   }
 }, {
