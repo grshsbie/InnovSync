@@ -47,7 +47,8 @@ const servicesSchema = new mongoose.Schema({
     enum: [
         'IRR',    // Iranian Rial
         'USD',    // United States Dollar
-        'EUR'     // Euro
+        'EUR',    // Euro
+        'AED'
     ],
     required: true
   }
