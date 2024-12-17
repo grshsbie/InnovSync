@@ -53,16 +53,30 @@ exports.createManufacturer = async (req, res) => {
 
 // GET /api/manufacturers
 exports.getAllManufacturers = async (req, res) => {
-    /*
-    Test in Postman:
-    Method: GET
-    URL: http://localhost:3000/api/manufacturers
-    */
     try {
         const productions = await Production.find();
         res.json(productions);
     } catch (err) {
         console.error(err.message);
+        res.status(500).send('Server error');
+    }
+};
+
+// GET /api/manufacturers/:id
+exports.getManufacturerById = async (req, res) => {
+    try {
+        const production = await Production.findById(req.params.id);
+
+        if (!production) {
+            return res.status(404).json({ msg: 'Manufacturing program not found' });
+        }
+
+        res.json(production);
+    } catch (err) {
+        console.error(err.message);
+        if (err.kind === 'ObjectId') {
+            return res.status(404).json({ msg: 'Manufacturing program not found' });
+        }
         res.status(500).send('Server error');
     }
 };

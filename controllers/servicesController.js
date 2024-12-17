@@ -158,4 +158,3 @@ exports.deleteService = async (req, res) => {
     }
 };
 
-// git commit -m "feat(services): add getServiceById controller for retrieving individual services"

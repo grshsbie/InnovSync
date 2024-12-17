@@ -7,6 +7,8 @@ router.post('/manufacturers', authMiddleware, manufacturerController.createManuf
 
 router.get('/manufacturers', authMiddleware, manufacturerController.getAllManufacturers);
 
+router.get('/manufacturers/:id', authMiddleware, manufacturerController.getManufacturerById);
+
 router.put('/manufacturers/:id', authMiddleware, manufacturerController.updateManufacturer);
 
 router.delete('/manufacturers/:id', authMiddleware, manufacturerController.deleteManufacturer);
