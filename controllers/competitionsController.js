@@ -67,6 +67,30 @@ exports.getAllCompetitions = async (req, res) => {
     }
 };
 
+// GET /api/competitions/:id
+exports.getCompetitionById = async (req, res) => {
+    /*
+    Test in Postman:
+    Method: GET
+    URL: http://localhost:5000/api/competitions/competitions/67594bf462d702c6d706e406
+    */
+    try {
+        const competition = await Competition.findById(req.params.id);
+
+        if (!competition) {
+            return res.status(404).json({ msg: 'Competition not found' });
+        }
+
+        res.json(competition);
+    } catch (err) {
+        console.error(err.message);
+        if(err.kind === 'ObjectId') {
+            return res.status(404).json({ msg: 'Competition not found' });
+        }
+        res.status(500).send('Server error');
+    }
+};
+
 // PUT /api/competitions/:id
 exports.updateCompetition = async (req, res) => {
     /*

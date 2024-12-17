@@ -45,7 +45,10 @@ app.get('/uploads', (req, res) => {
   });
 });
 
+
 app.use('/uploads', express.static('uploads'));
+app.use('/reports-bot', routes.botReport)
+
 app.use('/api/invverify', routes.invRoutes);
 app.use('/api/competitions', routes.competitions);
 app.use('/api/manufacturers', routes.manufacturers);
