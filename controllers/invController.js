@@ -49,6 +49,27 @@ exports.createInvVerify = async (req, res) => {
     }
 };
 
+// GET /api/invverify/:id
+exports.getInvVerifyById = async (req, res) => {
+    /*
+    Test in Postman:
+    Method: GET
+    URL: http://localhost:3000/api/invverify/[invverify_id]
+    */
+    try {
+        const invVerify = await InvVerify.findById(req.params.id);
+
+        if (!invVerify) {
+            return res.status(404).json({ msg: 'Investment verification not found' });
+        }
+
+        res.json(invVerify);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+};
+
 // GET /api/invverify
 exports.getAllInvVerify = async (req, res) => {
     /*

@@ -7,6 +7,8 @@ router.post('/invverify', authMiddleware, invVerifyController.createInvVerify);
 
 router.get('/invverify', authMiddleware, invVerifyController.getAllInvVerify);
 
+router.get('/invverify/:id', authMiddleware, invVerifyController.getInvVerifyById);
+
 router.put('/invverify/:id', authMiddleware, invVerifyController.updateInvVerify);
 
 router.delete('/invverify/:id', authMiddleware, invVerifyController.deleteInvVerify);
