@@ -63,6 +63,27 @@ exports.getAllServices = async (req, res) => {
     }
 };
 
+// GET /api/services/:id
+exports.getServiceById = async (req, res) => {
+    /*
+    Test in Postman:
+    Method: GET
+    URL: http://localhost:3000/api/services/[service_id]
+    */
+    try {
+        const service = await Service.findById(req.params.id);
+
+        if (!service) {
+            return res.status(404).json({ msg: 'Service not found' });
+        }
+
+        res.json(service);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+};
+
 // PUT /api/services/:id
 exports.updateService = async (req, res) => {
     /*
@@ -136,3 +157,5 @@ exports.deleteService = async (req, res) => {
         res.status(500).send('Server error');
     }
 };
+
+// git commit -m "feat(services): add getServiceById controller for retrieving individual services"

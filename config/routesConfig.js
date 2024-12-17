@@ -72,6 +72,12 @@ const routes = [
         handler: servicesController.getAllServices,
     },
     {
+        method: 'get',
+        path: '/services/:id',
+        middlewares: [authMiddleware],
+        handler: servicesController.getServiceById,
+    },
+    {
         method: 'put',
         path: '/services/:id',
         middlewares: [authMiddleware],
